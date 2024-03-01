@@ -2,14 +2,21 @@
   "name": "asn1-ber",
   "version": "1.2.2",
   "description": "Generate and parse ASN1.BER objects",
-  "main": "index.js",
+  "main": "dist/cjs/src/index.js",
+  "types": "dist/cjs/src/index.d.js",
+  "module": "dist/mjs/src/index.js",
+  "type": "commonjs",
   "scripts": {
+    "build": "npm run build-mjs && npm run build-cjs",
+    "build-mjs": "tsc -p tsconfig-mjs.json && echo '{\"type\": \"module\"}' > dist/mjs/package.json",
+    "build-cjs": "tsc -p tsconfig.json && echo '{\"type\": \"commonjs\"}' > dist/cjs/package.json",
     "test": "mocha"
   },
   "directories": {},
-  "dependencies": {},
   "devDependencies": {
-    "mocha": "^10.0.0"
+    "@types/node": "^20.11.23",
+    "mocha": "^10.0.0",
+    "typescript": "^5.3.3"
   },
   "contributors": [
     {

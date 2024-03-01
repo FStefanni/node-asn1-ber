@@ -1,0 +1,178 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "compilerOptions": {
+        // Type Checking
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "alwaysStrict": true,
+        "exactOptionalPropertyTypes": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "noUncheckedIndexedAccess": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "strict": true,
+        "strictBindCallApply": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "useUnknownInCatchVariables": true,
+
+        // Modules
+        "allowArbitraryExtensions": false,
+        "allowImportingTsExtensions": false,
+        "allowUmdGlobalAccess": false,
+        "baseUrl": ".",
+        //"customConditions": [], // only usable when 'moduleResolution' is set to 'node16', 'nodenext', or 'bundler'.
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "moduleSuffixes": [".mts", ".cts", ".mtsx", ".ctsx", ".ts", ".tsx", ""],
+        //"noResolve": true, // Causes issues which seems not solvable
+        "paths": {
+            "*": [
+                "node_modules/*",
+                "src/*",
+                "src/custom_ts_d/*"
+            ]
+        },
+        "resolveJsonModule": true,
+        //"resolvePackageJsonExports": true, // only usable when 'moduleResolution' is set to 'node16', 'nodenext', or 'bundler'.
+        //"resolvePackageJsonImports": true, // only usable when 'moduleResolution' is set to 'node16', 'nodenext', or 'bundler'.
+        "rootDir": ".",
+        "rootDirs": [],
+        "typeRoots": [
+            "./node_modules/@types",
+            "./src/custom_ts_d"
+        ],
+        // "types": [
+        //     "node"
+        // ],
+
+        // Emit
+        "declaration": true,
+        //"declarationDir": "",
+        "declarationMap": true,
+        //"downlevelIteration": true,
+        "emitBOM": false,
+        "emitDeclarationOnly": false,
+        "importHelpers": false, // When true, requires tslib module, e.g. for export * from "./aaa"
+        //"importsNotUsedAsValues" // deprecated,
+        "inlineSourceMap": false,
+        "inlineSources": false,
+        //"mapRoot",
+        "newLine": "LF",
+        "noEmit": false,
+        "noEmitHelpers": false,
+        "noEmitOnError": false,
+        "outDir": "dist/cjs",
+        //"outFile",
+        //"preserveConstEnums": false, // cannot be disabled when 'verbatimModuleSyntax' or 'isolatedModules' is enabled.
+        //"preserveValueImports // deprecated,
+        "removeComments": true,
+        "sourceMap": true,
+        //"sourceRoot"
+        "stripInternal": false,
+
+        // JavaScript Support
+        "allowJs": true,
+        "checkJs": true,
+        "maxNodeModuleJsDepth": 0,
+
+        // Editor Support
+        "disableSizeLimit": true,
+        "plugins": [],
+
+        // Interop Constraints
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "isolatedModules": true,
+        "preserveSymlinks": false,
+        "verbatimModuleSyntax": false, // true means issues between ESM and CommonJS
+
+        // Backwards Compatibility
+        //charset,
+        //keyofStringsOnly,
+        //noImplicitUseStrict,
+        //noStrictGenericChecks,
+        //out,
+        //suppressExcessPropertyErrors
+        //suppressImplicitAnyIndexErrors
+
+        // Language and Environment
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "jsx": "preserve",
+        //jsxFactory,
+        //jsxFragmentFactory,
+        //jsxImportSource,
+        //lib,
+        "moduleDetection": "auto",
+        //"noLib",
+        //reactNamespace,
+        "target": "es2020",
+        "useDefineForClassFields": false,
+
+        // Compiler Diagnostics
+        //diagnostics,
+        //explainFiles,
+        //extendedDiagnostics,
+        //generateCpuProfile,
+        //listEmittedFiles,
+        //listFiles
+        //traceResolution
+
+        // Projects
+        //composite,
+        //disableReferencedProjectLoad,
+        //disableSolutionSearching,
+        //disableSourceOfProjectReferenceRedirect,
+        //incremental
+        //tsBuildInfoFile
+
+        // Output Formatting
+        "noErrorTruncation": true,
+        "preserveWatchOutput": true,
+        "pretty": true,
+
+        // Completeness
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true,
+
+        // Watch Options
+        "assumeChangesOnlyAffectDirectDependencies": false
+    },
+    "watchOptions": {
+        "watchFile": "useFsEvents",
+        "watchDirectory": "useFsEvents",
+        "fallbackPolling": "fixedInterval",
+        "synchronousWatchDirectory": false,
+        "excludeDirectories": [
+            "doc",
+            "node_modules"
+         ],
+         "excludeFiles": []
+    },
+    "typeAcquisition": {
+        //"include": [],
+        //"enable": false,
+        //"exclude": ["doc"]
+    },
+
+    // /////////////////////////////////////////////////////////////////////////
+    "include": [
+        "src",
+        "doc/manual/index.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+    "typeRoots": [
+        "./node_modules/@types",
+        "./src/custom_ts_d"
+    ]
+}

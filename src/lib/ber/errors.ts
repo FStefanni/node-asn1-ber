@@ -1,9 +1,9 @@
 
-module.exports = {
-	InvalidAsn1Error: function(msg) {
-		var e = new Error()
-		e.name = 'InvalidAsn1Error'
-		e.message = msg || ''
-		return e
-	}
+export class InvalidAsn1Error
+    extends Error
+{
+    constructor (msg?: string) {
+        super(msg)
+        this.name = 'InvalidAsn1Error'
+    }
 }

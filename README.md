@@ -18,22 +18,22 @@ This module is installed using [node package manager (npm)][npm]:
 
 It is loaded using the `require()` function:
 
-    var asn1 = require("asn1-ber")
+    const asn1 = require("asn1-ber")
 
 A reader or writer can then be created to read or write objects:
 
 	// Let's create an ASN1.BER object using the writing interface:
-	var writer = new asn1.BerWriter()
+	const writer = new asn1.BerWriter()
 
 	writer.startSequence()
 	writer.writeBoolean(true)
 	writer.writeBoolean(false)
 	writer.endSequence()
 
-	var buffer = writer.buffer
+	const buffer = writer.buffer
 
 	// Now let's read the data back from the buffer:
-	var reader = new asn1.BerReader(buffer)
+	const reader = new asn1.BerReader(buffer)
 
 	reader.readSequence()
 	reader.readBoolean() // first boolean is true
@@ -115,18 +115,18 @@ object instance.
 In the following example a simple sequence of two boolean objects is written,
 then the `Buffer` instance obtained:
 
-	var writer = new asn1.BerWriter()
+	const writer = new asn1.BerWriter()
 
 	writer.startSequence()
 	writer.writeBoolean(true)
 	writer.writeBoolean(false)
 	writer.endSequence()
 
-	var buffer = writer.buffer
+	const buffer = writer.buffer
 
 The resulting buffer will contain the following:
 
-	var buffer = Buffer.alloc([
+	const buffer = Buffer.alloc([
 			asn1.Ber.Sequence | asn1.Ber.Constructor,
 			6, // length of the data contained within the sequence
 			asn1.Ber.Boolean,
@@ -141,12 +141,12 @@ The resulting buffer will contain the following:
 
 Instantiates and returns an instance of the `BerWriter` class:
 
-	var options = {
+	const options = {
 		size: 1024,
 		growthFactor: 8
 	}
 
-	var writer = new asn1.BerWriter(options)
+	const writer = new asn1.BerWriter(options)
 
 The optional `options` parameter is an object, and can contain the following
 items:
@@ -169,7 +169,7 @@ items:
 Once an object is complete the Node.js `Buffer` instance can be obtained via the
 writes `buffer` attribute, e.g.:
 
-	var buffer = writer.buffer
+	const buffer = writer.buffer
 
 The `Buffer` instance returned will be a copy of the internal instance used by
 the writer and can be safely modified once obtained.
@@ -224,10 +224,10 @@ The following two examples write a single byte in different ways.  One provides
 a tag, in which case `writeBuffer()` will write the tag and length, and in the
 other no tag is provided, so `writeBuffer()` will NOT write a tag or length:
 
-	var b1 = Buffer.alloc([0x01])
+	const b1 = Buffer.alloc([0x01])
 	writer.writeBuffer(b1, asn1.Ber.Integer)
 
-	var b2 = Buffer.alloc([asn1.Ber.Integer, 0x01, 0x01])
+	const b2 = Buffer.alloc([asn1.Ber.Integer, 0x01, 0x01])
 	writer.writeBuffer(b2)
 
 ### writer.writeByte(byte)
@@ -347,7 +347,7 @@ incremented based on the amount of data read per method call.
 In the following example the appropriate methods are used to read a buffer
 containing an ASN1.BER object:
 
-	var buffer = Buffer.alloc([
+	const buffer = Buffer.alloc([
 			asn1.Ber.Sequence | asn1.Ber.Constructor,
 			6, // length of the data contained within the sequence
 			asn1.Ber.Boolean,
@@ -358,7 +358,7 @@ containing an ASN1.BER object:
 			0, // false
 		)
 
-	var reader = new asn1.BerReader(buffer)
+	const reader = new asn1.BerReader(buffer)
 
 	reader.readSequence(asn1.Ber.Sequence | asn1.Ber.Constructor)
 	reader.readBoolean() // 1st boolean is true
@@ -368,7 +368,7 @@ containing an ASN1.BER object:
 
 Instantiates and returns an instance of the `BerReader` class:
 
-	var reader = new asn1.BerReader(buffer)
+	const reader = new asn1.BerReader(buffer)
 
 The `buffer` parameter is an instance of the Node.js `Buffer` class, this is
 typically referred to as the "input buffer" throughout this documentation.
@@ -377,7 +377,7 @@ typically referred to as the "input buffer" throughout this documentation.
 
 The `peek()` method is sugar for the following method call:
 
-	var byte = reader.readByte(true)
+	const byte = reader.readByte(true)
 
 ### reader.readBoolean([tag])
 
@@ -391,7 +391,7 @@ object, or a number if the required type is not pre-defined, and defaults to
 The following example reads a boolean value, since no tag is specified the
 type `asn1.Ber.Boolean` is used to validate the type being read:
 
-	var bool = reader.readBoolean()
+	const bool = reader.readBoolean()
 
 ### reader.readByte([peek])
 
@@ -409,7 +409,7 @@ The following example reads a a boolean value if the next object is of the type
 		reader.readByte() // consume the type
 		reader.readByte() // consume length, we assume 1, we /should/ really check
 
-		var value = reader.readByte() ? true : false
+		const value = reader.readByte() ? true : false
 	}
 
 ### reader.readEnumeration([tag])
@@ -424,7 +424,7 @@ object, or a number if the required type is not pre-defined, and defaults to
 The following example reads an enumerated value, since no tag is specified the
 type `asn1.Ber.Enumeration` is used to validate the type being read:
 
-	var integer = reader.readEnumeration()
+	const integer = reader.readEnumeration()
 
 ### reader.readInt([tag])
 
@@ -438,7 +438,7 @@ object, or a number if the required type is not pre-defined, and defaults to
 The following example reads an integer value, since no tag is specified the
 type `asn1.Ber.Integer` is used to validate the type being read:
 
-	var integer = reader.readInt()
+	const integer = reader.readInt()
 
 ### reader.readOID([tag])
 
@@ -452,7 +452,7 @@ object, or a number if the required type is not pre-defined, and defaults to
 The following example reads a object identifier, since no tag is specified the
 type `asn1.Ber.OID` is used to validate the type being read:
 
-	var oid = reader.readOID()
+	const oid = reader.readOID()
 
 ### reader.readSequence([tag])
 
@@ -470,15 +470,15 @@ if `tag` was specified then the sequence type will be equal to `tag`.
 The following example reads all sequences, each containing a key and value,
 until there are no more sequences left:
 
-	var kvs = []
+	const kvs = []
 
 	while (true) {
-		var tag = reader.readSequence() // We don't care about the sequences type
+		const tag = reader.readSequence() // We don't care about the sequences type
 		if (! tag)
 			break
 
-		var key = reader.readString()
-		var value = reader.readString()
+		const key = reader.readString()
+		const value = reader.readString()
 
 		kvs.push({key: key, value: value})
 	}
@@ -497,7 +497,7 @@ object, or a number if the required type is not pre-defined, and defaults to
 The following example reads a string and requests it be returned as a `Buffer`
 instance:
 
-	var buffer = reader.readString(asn1.Ber.OctetString, true)
+	const buffer = reader.readString(asn1.Ber.OctetString, true)
 
 # Changes
 

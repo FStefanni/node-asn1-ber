@@ -1,7 +1,17 @@
 
-var Ber = requi../lib/ber/index.jsx')
+export * from './lib/ber/index.js'
+import {
+    ASN1,
+    InvalidAsn1Error,
+    Reader,
+    Writer
+} from './lib/ber/index.js'
 
-exports.Ber = Ber
-exports.BerReader = Ber.Reader
-exports.BerWriter = Ber.Writer
-../lib/ber/index.js
+export const Ber = {
+    ...ASN1,
+    InvalidAsn1Error,
+    Reader,
+    Writer
+};
+export const BerReader = Reader
+export const BerWriter = Writer

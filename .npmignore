@@ -1,2 +1,14 @@
 .gitignore
 node_modules
+/test
+/.eslintignore
+/tests/*
+/.eslintrc.json
+/.gitlab-ci.yml
+/doc/*
+/public
+/scripts
+/src
+/.vscode
+/tsconfig.json
+/.semversioner
