@@ -41,7 +41,7 @@ export class Reader
      * @param {Boolean} peek true means don't move offset.
      * @return {Number} the next byte, null if not enough data.
      */
-    readByte (peek: boolean): number | null {
+    readByte (peek?: boolean): number | null {
         if (this._size - this._offset < 1)
             return null;
 
@@ -155,7 +155,7 @@ export class Reader
     }
 
 
-    readString (tag?: number, retbuf?: boolean): string | Buffer | null {
+    readString (tag?: number | null, retbuf?: boolean): string | Buffer | null {
         if (!tag)
             tag = ASN1.OctetString;
 

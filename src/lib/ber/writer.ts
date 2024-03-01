@@ -19,7 +19,7 @@ export class Writer
 {
     private _buf: Buffer;
     private _size: number;
-    private _offset: number;
+    _offset: number;
     private readonly _options: WriterOptions;
     private readonly _seq: Array<number>;
 
